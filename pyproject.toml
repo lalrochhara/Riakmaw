@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "riakmaw"
+name = "my-riakmaw-project"
 version = "2.13.9-alpha5"
 description = "Telegram group management bot"
 license = "GPL-3.0-or-later"
@@ -27,7 +27,7 @@ classifiers = [
 ]
 
 [tool.poetry.scripts]
-Riakmaw = "Riakmaw.main:start"
+Riakmaw = "riakmaw.main:start"
 
 [tool.poetry.dependencies]
 python = "~=3.9"
