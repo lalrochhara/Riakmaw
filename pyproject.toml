@@ -27,7 +27,7 @@ classifiers = [
 ]
 
 [tool.poetry.scripts]
-Riakmaw = "riakmaw.main:start"
+my-riakmaw-project = "riakmaw.main:start"
 
 [tool.poetry.dependencies]
 python = "~=3.9"
@@ -51,7 +51,7 @@ typing-extensions = "^4.5.0"
 uvloop = {version = "^0.17.0", optional = true, platform = "linux"}
 yarl = "^1.8.2"
 aiocache = "^0.12.0"
-riakmaw = { git = "https://github.com/lalrochhara/Riakmaw.git" }
+my-riakmaw-project = { git = "https://github.com/lalrochhara/Riakmaw.git" }
 
 [tool.poetry.extras]
 all = ["uvloop"]
