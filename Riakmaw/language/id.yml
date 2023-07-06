@@ -1,0 +1,656 @@
+#region Main
+start-pm: |
+  Hai!
+  Salam kenal, nama saya adalah [**{}**](https://firebasestorage.googleapis.com/v0/b/baby-bawitlung-story.appspot.com/o/Image%20file%2Fdsacrt.jpg?alt=media&token=3d122954-95a1-4394-82f9-cee3814f3936). Dihadirkan untuk membantu Anda dalam mengelola grup dengan mudah dan menyenangkan.
+  Silahkan kirim /help untuk melihat perintah yang tersedia.
+
+  Jika ada pertanyaan atau masalah, silahkan bergabung dan diskusikan di [Support Group](https://t.me/famhawiteinfosys)
+  Dikelola oleh: [Famhawite Infosys Team](https://t.me/famhawiteinfosys/)
+
+  Tertarik menggunakan saya dalam mengelola grup Anda?
+  Silahkan klik tombol di bawah, untuk menambahkan saya ke grup Anda.
+help-pm: |
+  Hai salam kenal! Nama saya adalah [**{}**](https://firebasestorage.googleapis.com/v0/b/baby-bawitlung-story.appspot.com/o/Image%20file%2Fdsacrt.jpg?alt=media&token=3d122954-95a1-4394-82f9-cee3814f3936).
+  Saya adalah bot manajemen grup dengan beberapa beberapa fitur yang bertujuan untuk membantu dalam mengelola grup Anda.
+
+  Berikut adalah daftar yang tersedia untuk mendapatkan gambaran beberapa hal yang dapat saya lakukan.
+  perintah yang tersedia:
+  × /start: Perintah untuk memulai dan memeriksa status aktif.
+  × /help: Menampilkan daftar pesan bantuan.
+  × /setlang: Mengubah bahasa yang saya gunakan.
+  × /donate: Menampilkan informasi tentang cara mendukung saya.
+
+  Pengaturan Riakmaw juga dapat dikonfigurasi di dashboard kami, [Klik di sini](https://userbotindo.com/dashboard?ref=Riakmaw) untuk membuka dashboard.
+start-chat: Hai! Salam hangat, semoga hari Anda menyenangkan.
+help-chat: Hubungi saya secara personal untuk mendapatkan daftar perintah yang tersedia.
+add-to-group-button: Tambahkan Saya
+start-help-button: Bantuan
+status-page-button: Status
+dashboard-button: Dashboard
+help-chat-button: Bantuan
+back-button: Kembali
+donate: |
+  Anda dapat mendukung kami dengan berdonasi. Silahkan kunjungi [Paypal](https://paypal.me/NickyLrca?country.x=IN&locale.x=en_GB) untuk keterangan lebih lanjut.
+
+  Tim dijalankan oleh sukarelawan, dan setiap bantuan kecil dapat membantu untuk meningkatkan layanan kami.
+  Terima kasih atas dukungan Anda!
+markdown-helper: |
+  Markdown adalah alat pemformatan yang didukung oleh telegram. {} memiliki beberapa penyempurnaan, untuk memastikan bahwa pesan yang tersimpan diurai dengan benar, dan memungkinkan untuk anda membuat beberapa tombol.\n
+  <b>Markdown yang didukung:</b>
+  - <code>__italic__</code>: Dua garis bawah di antara kata akan menghasilkan teks <i>italic</i>.
+  - <code>**bold**</code>: Dua simbol bintang di antara kata akan menghasilkan teks <b>tebal</b>.
+  - <code>`monospace`</code>: Tanda kutip terbalik di antara kata akan menghasilkan teks <code>monospace</code>.
+  - <code>~~strike~~</code>: Dua tanda gelombang di antara kata akan menghasilkan teks <del>strikethrough</del>.
+  - <code>--underline--</code>: Dua tanda penghubung di antara kata akan menghasilkan teks <u>underline</u>.
+  - <code>||spoiler||</code>: Dua tanda garis vertikal di antara kata akan menghasilkan teks <spoiler>spoiler</spoiler>.
+  - <code>[sometext](someURL)</code>: Ini akan membuat tautan pesan yang hanya akan menampilkan beberapa teks, dan mengetuknya akan membuka halaman suatu url atau website.
+  Contoh: <code>[test](example.com)</code>
+
+  - <code>[buttontext](buttonurl:someURL)</code>: Ini adalah format untuk membuat tombol telegram. buttontext akan menjadi apa yang ditampilkan pada tombol, dan suatu url akan langsung mengarahkan ke url tersebut.
+  Contoh: <code>[This is a button](buttonurl:google.com)</code>
+  Jika anda ingin beberapa tombol pada baris yang sama, gunakan :same, seperti contoh berikut ini:
+  <code>[one](buttonurl://example.com)</code>
+  <code>[two](buttonurl://google.com:same)</code>
+  Ini akan membuat dua tombol pada satu baris, bukan satu tombol per baris.
+
+  Anda <b>HARUS</b> menyisip kan setidaknya satu huruf sebelum membuat tombol.
+filling-format-helper: |
+  Anda dapat menyesuaikan konten pada teks. Misalnya, Anda ingin melakukan <i>mention</i> pengguna yang baru bergabung dengan obrolan grup.
+
+  Format pengisian yang didukung:
+  - `{first}`: Nama depan pengguna.
+  - `{last}`: Nama belakang pengguna.
+  - `{fullname}`: Nama lengkap pengguna.
+  - `{username}`: Melakukan mention jika pengguna tidak memiliki username.
+  - `{mention}`: Menyebut pengguna.
+  - `{id}`: ID pengguna.
+  - `{chatname}`: Nama obrolan saat ini.
+  - `{count}`: Menghitung jumlah anggota chat.
+
+  Contoh:
+  `Hai {first}!
+  Apa kabar? Selamat datang di {chatname}.`
+#endregion
+#region admin
+admins-button: Administrator
+admins-help: |
+  Ini adalah daftar perintah yang dapat saya lakukan
+  Untuk anda yang merupakan seorang Administrator di suatu grup.\n
+  × /adminlist: Untuk menampilkan daftar semua Administartor di grup anda.\n
+  **Hanya Administrator yang bisa menggunakan:**
+  × /pin: Untuk menyematkan suatu pesan pada grup anda.
+  × /unpin: Untuk membatalkan pesan yang disematkan pada grup anda.
+  × /setgpic : Mengubah foto profile grup anda.
+  × /zombies : Mengeluarkan akun yang sudah terhapus.
+  × /promote <ID Pengguna/username> : Mengangkat anggota grup menjadi Administrator.
+  × /demote <ID Pengguna/username> : Menurunkan Administrator grup untuk hanya menjadi anggota.
+gpic-no-photo: Berikan saya sebuah foto!
+gpic-success-changed: Gambar grup berhasil diganti!.
+finding-zombie: "Mencari akun yang sudah terhapus..."
+cleaning-zombie: "**{}** Akun yang sudah terhapus ditemukan, dan telah dikeluarkan dari grup."
+zombie-clean: "Akun yang sudah terhapus tidak ditemukan pada grup."
+promote-error-invalid: "**ID Pengguna tidak benar**\n\nPeriksa ulang apakah dia seorang anggota grup, dan masukkan kembali ID pengguna atau nama pengguna (@username) yang benar."
+promote-error-self: "Anda tidak dapat mengangkat diri sendiri!"
+promote-error-privacy-restricted: "**Pengguna ini memiliki pengaturan privasi yang mencegah tindakan ini**\n\nPeriksa ulang, apakah dia anggota di sini, dan masukkan kembali ID/username yang benar."
+demote-success: "Berhasil menurunkan pengguna menjadi anggota."
+demote-error-perm: "Mohon maaf saya tidak memiliki izin untuk menurunkan. Saya hanya bisa menurunkan orang yang saya angkat."
+no-demote-user: "Berikan ID/username!"
+demote-error-self: "Apakah kamu yakin akan menurunkan dirimu sendiri?"
+demote-error-creator: "Anda tidak dapat menurunkan pemilik grup."
+promote-success: "Berhasil diangkat menjadi Administrator."
+promote-error-perm: "Pengguna ini sudah menjadi Administrator."
+no-promote-user: "Berikan ID/username."
+no-pinned-message: "Tidak ada pesan yang disematkan."
+#endregion
+#region Backups
+backups-button: Cadangan
+backups-help: |
+  **Hanya Administrator yang bisa menggunakan perintah:**\n
+  × /backup: Cadangkan data grup, contoh : catatan, pesan sambutan, spam shield, dan lain-lain. Yang mana tersimpan di basis data saya.
+  × /restore: Balas ke file cadangan anda untuk memulihkan data grup.
+
+  Note:
+  File cadangan dari suatu grup tidak dapat dipulihkan ke grup lain.
+backup-doc: |
+  **Pencadangan Berhasil!**
+  Grup: **{}**
+  Grup ID: `{}`
+  Waktu: {}
+  File ini berisi cadangan data yaitu:{}
+backup-null: Grup ini tidak memiliki data yang tersimpan di basis data saya.
+backup-data-null: Tidak ada data untuk dipulihkan.
+backup-progress: Mencadangkan data grup.
+backup-id-invalid: Mohon maaf ini adalah file cadangan dari grup lain. Saya tidak dapat memulihkan data yang berbeda.
+backup-done: Berhasil memulihkan data.
+invalid-backup-file: Sepertinya file ini bukan file yang dicadangkan dari saya. Saya tidak dapat memulihkan data.
+no-backup-file: Balas ke file yang dicadangkan!
+restore-progress: Memulihkan data.
+#endregion
+#region federations
+federations-button: Federasi
+federations-help: |
+  Manajemen grup itu menyenangkan, sampai anda mulai mendapatkan spammer, dan anda harus melarang mereka. Dan anda harus mulai melarang mereka lebih banyak, dan lebih banyak lagi, dan itu akan menyusahkan.
+  Tapi ternyata anda memiliki beberapa grup, dan anda tidak ingin spammer ini ada di grup mana pun - bagaimana anda bisa menanganinya? Apakah anda harus memblokirnya secara manual, di semua grup anda?
+
+  Tidak lagi! Dengan federasi, anda dapat membuat larangan dalam satu grup dan kemudian orang tersebut akan dilarang di semua grup anda yang lain.
+  anda bahkan dapat menunjuk Administrator federasi, sehingga Administrator tepercaya anda dapat memblokir orang tersebut ke semua grup yang ingin anda lindungi.
+
+  **Perintah yang tersedia:**
+  × /newfed <nama>: Buat federasi baru dengan nama yang anda ditentukan.
+  × /delfed <ID Federasi>: Menghapus federasi yang anda miliki dan informasi apa pun yang terkait dengannya (Ini tidak akan membatalkan pemblokiran pengguna yang diblokir).
+  × /joinfed <ID Federasi>: Digabungkan grup saat ini ke federasi yang ditentukan. (**Hanya pemilik grup yang dapat melakukan ini**)
+  × /leavefed <ID Federasi>: Tinggalkan federasi saat ini. (**Hanya pemilik grup yang dapat melakukan ini**)
+  × /fedinfo: Menampilkan informasi tentang suatu federasi.
+  × /fedstats | /fstats: Menampilkan informasi tentang larangan seorang pengguna di suatu federasi.
+  × /myfeds | /myfed : Daftar semua federasi dimana anda menjadi Administrator (Hanya melalui PM).
+
+  **Perintah yang tersedia untuk pemilik federasi:**
+  × /fedpromote | /fpromote: Mengangkat seseorang untuk menjadi seorang Administrator federasi.
+  × /feddemote | /fdemote:  Menurunkan seorang Administrator federasi di federasi anda.
+  × /fedbackup: Mendapatkan file cadangan tentang pengguna yang dilarang dalam federasi dalam CSV (Hanya melalui PM).
+  × /fedrestore: Mengembalikan file candangan untuk memulihkan pengguna yang dilarang (Hanya melalui PM).
+  × /subfed <fedID>: Mengikuti federasi lain. Pengguna yang diblokir di federasi yang berlangganan akan diblokir di federasi Anda juga.
+  Catatan: Tidak mempengaruhi daftar larangan federasi anda, hanya mewarisi larangan dari federasi yang diikuti.
+  × /unsubfed <fedID>: Berhenti mengikuti federasi anda dari yang lain. Larangan dari fed lain tidak akan berlaku lagi.
+  × /setfedlog: Membuat grup atau channel saat ini sebagai log federasi. Semua peristiwa federasi akan dicatat di sini.
+  × /unsetfedlog: Membatalkan log federation. Semua peristiwa federasi tidak akan dicatat di sini.
+
+  **Perintah yang tersedia untuk Administrator federasi:**
+  × /fban: Melarang pengguna atau channel di federasi saat ini.
+  × /unfban: Membatalkan blokir pengguna atau channel di federasi saat ini.
+  × /fadmins: Menampilkan Administrator federasi saat ini.
+federation-limit: Kamu hanya dapat memiliki 1 federasi!
+new-federation: |
+  **Federasi baru sudah dibuat**
+  **Nama:** {fed_name}
+  **ID Federasi:** {fed_id}\n
+  Gunakan perintah ini di grup untuk bergabung dengan federasi
+  `/joinfed {fed_id}`
+need-fed-name: Tolong tulis nama federasi yang akan anda buat!
+user-no-feds: Sepertinya kamu tidak memiliki suatu federasi saat ini!\nBuat dengan cara `/newfed <nama federasi>`
+del-fed-confirm: |
+  Anda yakin ingin menghapus federasi ini?
+  Tindakan ini tidak bisa dibatalkan!
+  anda akan kehilangan seluruh daftar pengguna yang anda larang dan federasi anda akan hilang secara permanen!
+  \nKonfirmasi penghapusan dari **{}**
+fed-confirm-text: "⚠️ Konfirmasi dihapus ⚠️"
+fed-abort-text: Batalkan
+fed-delete-canceled: Penghapus federasi dibatalkan
+fed-delete-done: Saya sudah menghapus federasi kamu!\nSemua grup yang terhubung dengan **{}** sekarang tanpa federasi.
+fed-cant-two-feds: Anda tidak dapat bergabung dengan dua federasi dalam satu grup!
+fed-invalid-id: Tolong masukkan ID federasi yang sah dan benar
+fed-invalid-user-id: |
+  Harap masukkan ID pengguna yang sah dan benar
+  Contoh:
+    - `/fstats <user_id> <fed_id>`: Untuk melihat larangan pengguna di federasi tertentu
+    - `/fstats <user_id>`: Untuk melihat larangan pengguna di semua federasi
+    - `/fstats <balas ke pesan>`: Untuk melihat larangan pengguna yang dibalas di semua federasi
+    - `/fstats`: Untuk melihat larangan anda di semua federasi
+fed-already-connected: Grup ini sudah terhubung ke federasi itu!
+fed-chat-joined-info: Grup ini sekarang bergabung dalam **{}** Federation!
+fed-not-connected: Grup ini tidak terhubung ke federasi itu!
+fed-chat-leave-info: Grup ini sekarang meninggalkan **{}** Federation!
+fed-no-promote-user: Siapa yang harus saya angkat menjadi Administrator?\nBerikan saya orang tersebut!
+fed-no-fed-chat: Grup ini tidak terhubung ke federasi apapun!
+fed-owner-only-promote: Hanya pemilik federasi yang dapat mengangkat Administrator baru!
+fed-already-owner: Anda adalah pemilik Federasi ini!
+fed-already-admin: Pengguna sudah menjadi Administrator di federasi ini!
+fed-promote-done: Berhasil diangkat menjadi Administrator federasi!
+fed-no-demote-user: Siapa yang harus saya turunkan dari Administrator federasi?\nBerikan saya orang tersebut!
+fed-owner-only-demote: Hanya pemilik federasi yang dapat menurunkan seorang Administrator!
+fed-user-not-admin: Pengguna ini bukan seorang Administrator di federasi ini!
+fed-demote-done: Berhasil diturunkan!
+fed-specified-id: Tolong ID federasi yang benar dan jelas!
+fed-info-text: |
+  **Informasi Federasi:**
+  **ID Federasi: **` {}`
+  **Nama: **`{}`
+  **Pemilik: **{}
+  **Total adminstrator: ** `{}`
+  **Total pengguna yang dilarang: ** `{}`
+  **Total channel yang dilarang: ** `{}`
+  **Total grup yang terhubung federasi: ** `{}`
+  **Total fed pengikut: ** `{}`
+fed-info-subscription: "\nMengikuti federasi berikut:\n"
+fed-admin-only: Hanya Administrator federasi yang dapat melakukan ini!
+fed-admin-text: |
+  **{} admins:**
+  👑 Owner: {}
+fed-no-admin: Tidak ada Administrator di dalam federasi ini!
+fed-no-ban-user: Siapa yang harus saya blokir?
+fed-ban-self: Mohon maaf, saya tidak bisa!
+fed-ban-owner: Bagaimana cara saya memblokir seorang pemilik federasi dalam federasi yang dia miliki!
+fed-ban-protected: Saya tidak akan melakukan fban kepada pengguna ini!
+fed-ban-info-update: |
+  **Pembaruan Larangan Federasi**
+  **Federasi: **{}
+  **Administrator Federasi: **{}
+  **Pengguna: ** {}
+  **ID Pengguna: ** {}
+  **Alasan lama**: {}
+  **Alasan baru**: {}
+fed-ban-chat-info-update: |
+  **Pembaruan Larangan Federasi**
+  **Federasi: **{}
+  **Administrator Federasi: **{}
+  **Channel: ** {}
+  **Channel ID: ** {}
+  **Alasan lama**: {}
+  **Alasan baru**: {}
+fed-ban-info: |
+  **Larangan Federasi Baru**
+  **Federasi: **{}
+  **Administrator Federasi: **{}
+  **Pengguna: ** {}
+  **ID Pengguna: ** {}
+  **Alasan**: {}
+fed-ban-chat-info: |
+  **Larangan Federasi Baru**
+  **Federasi: **{}
+  **Administrator Federasi: **{}
+  **Channel: ** {}
+  **Chat ID: ** {}
+  **Alasan**: {}
+fed-user-not-banned: Pengguna ini tidak diblokir dalam federeasi ini!
+fed-unban-info: |
+  **Membatalkan Larangan Federasi**
+  **Federasi: **{}
+  **Administrator Federasi: **{}
+  **Pengguna: **{}
+  **ID Pengguna: **`{}`
+fed-unban-info-chat: |
+  **Membatalkan Larangan Federasi**
+  **Federasi: **{}
+  **Administrator Federasi: **{}
+  **Channel: **{}
+  **Chat ID: **{}
+fed-stat-banned: |
+  Pengguna ini diblokir dalam federasi ini.
+  **Alasan: ** {}
+  **Diblokir dalam federasi: ** {}
+fed-stat-not-banned: Pengguna ini tidak diblokir dalam federasi itu!
+fed-stat-multi: Pengguna ini sudah diblokir dalam federasi ini.\n
+fed-stat-multi-info: " -  **{}**(`{}`)\n    **Alasan: **{}\n"
+fed-stat-multi-not-banned: Pengguna ini tidak diblokir dalam federasi manapun!
+fed-backup-empty: Tidak ada data federasi.
+fed-restore-done: Selesai memulihkan file cadangan.
+fed-myfeds-owner: "Kamu adalah **pemilik** dari federasi ini:\n"
+fed-myfeds-admin: "\nKamu adalah **Administrator** dalam federasi ini:\n"
+fed-myfeds-no-admin: Sepertinya anda tidak menjadi Administrator di federasi manapun.
+fed-set-log-args: "Untuk membuat log federasi di saluran atau grup, silahkan gunakan federasi ID yang jelas dan benar untuk dihubungkan.\neg: `/setfedlog federasi ID`"
+fed-not-found: Federasi tidak ditemukan!
+fed-check-identity: Tolong tanyakan kepada pemilik federasi untuk konfirmasi tindakan ini dengan mengklik tombol dibawah ini.
+fed-log-set-group: "Grup ini diatur sebagai **{name}** catatan"
+fed-log-set-chnl: "Saluran ini telah ditetapkan sebagai catatan federasi untuk **{}**\nall tindakan terkait federasi akan dicatat di sini."
+fed-invalid-identity: Pengguna yang mengklik tombol konfirmasi bukanlah pemilik federasi.\nHanya pemilik federasi yang dapat menetapkan catatan federasi.
+fed-log-unset: Catatan federasi dari **{}** telah dibatalkan.
+fed-autoban: "Pengguna {} dilarang dalam federasi ini (**{}**), dan sudah dikeluarkan.\n**Alasan:** {}\n**Dilarang pada:** {}"
+fed-autoban-chat: "Channel {} dilarang dalam federasi ini (**{}**), dan sudah dikeluarkan.\n**Alasan:** {}\n**Dilarang pada:** {}"
+fed-autoban-subfed: "Pengguna {} dilarang dalam subfederasi (**{}**), dan sudah dikeluarkan.\n**Alasan:** {}\n**Dilarang pada:** {}"
+fed-autoban-chat-subfed: "Channel {} dilarang dalam subfederasi (**{}**), dan sudah dikeluarkan.\n**Alasan:** {}\n**Dilarang pada:** {}"
+fed-autoleave: 'Saya tidak lagi memiliki izin untuk melarang anggota dalam obrolan ini. Meninggalkan federasi "{}"(`{}`)'
+fed-owner-cmd: "Perintah ini hanya bisa digunakan oleh pemilik federasi."
+fed-subs-join: "Federasi **{}** telah mengikuti federasi **{}**"
+fed-subs-leave: "Federasi **{}** berhenti mengikuti federasi **{}**"
+#endregion
+#region filters
+filters-button: Filter
+filters-help: |
+  ** Hanya Administrator yang bisa menggunakan: **
+  × /filters: Daftar semua filter yang ada pada grup ini .
+  × /filter <kata kunci> <pesan balasan>: Menambah filter dari kata kunci pada grup. Bot akan membalas pesan ketika kata kunci disebutkan.
+  × /stop <keyword>: Stop the filter with the keyword.
+  × /stop <kata kunci>: Menghentikan filter dengan kata kunci yang diberikan.
+  × /rmallfilters: Menghentikan semua filter pada grup.
+
+  Filter mendukung markdown (cek /markdownhelp).
+filters-added: "Berhasil menambahkan `{}` sebagai filter."
+filters-removed: "Berhasil menghapus `{}` dari filter."
+filter-help: "Contoh: `/filter <kata kunci> <teks>`"
+filter-stop-help: "Contoh: `/stop <kata kunci>`"
+filters-chat-nofilter: Grup ini tidak memiliki filter.
+filters-chat-nokeyword: "Tidak ada filter dengan kata kunci `{}` di grup ini."
+filters-rmall: "Berhasil menghapus {} filter pada grup ini."
+filters-list: "Filter pada **{}**:\n"
+#endregion
+#region language
+language-button: Bahasa
+language-help: |
+  Bot ini hadir dengan dukungan multi bahasa.
+  Anda dapat memilih preferensi bahasa anda!
+
+  **Bahasa yang tersedia:**
+  × Bahasa Inggris.
+  × Bahasa Indonesia.
+
+  Perintah:
+  × /setlang | /lang | /language : Mengganti bahasa yang saya gunakan.
+
+  **Catatan:**
+  Anda dapat menggunakan perintah ini pada grup anda untuk mengganti bahasa yang digunakan.\n
+current-language: "Bahasa **{}** saat ini adalah **{}**\nKlik bahasa yang ingin kamu gunakan"
+language-code-error: Telah terjadi kesalahan (tidak ada string bahasa yang tersedia) Silahkan hubungi grup support saya.
+language-set-succes: Bahasa yang digunakan sudah berhasil dirubah ke {}
+language-invalid: Mohon maaf kode bahasa tidak cocok.\nKode bahasa yang tersedia {}
+#endregion
+#region misc
+miscs-button: Lainnya
+miscs-help: |
+  Berisi perintah kecil dan sederhana yang mungkin tidak cocok di mana pun.\n
+  **Perintah:**
+  ×  /id : Menampilkan ID pengguna, ID pesan, ID grup dan banyak lagi.
+  ×  /info: Menampilkan informasi tentang seorang pengguna.
+  ×  /ping : Menampilkan latensi bot.
+  ×  /paste : Menyalin dan menempel file teks ke layanan pastebin.
+paste-wait: "`Sedang menyalin ke {}...`"
+paste-succes: "**Berhasil disali ke {}!**"
+paste-fail: "`Gagal memproses {}!` Gunakan  flag __[-s, stashbin, hastebin, -h, spacebin]__ untuk menggunakan layanan lain"
+paste-invalid: "Flag '**{}**' tidak cocok.\nFlag tersedia:__[-s, stashbin, hastebin, -h, spacebin]__"
+#endregion
+#region mute
+muting-button: Membisukan
+muting-help: |
+  Beberapa orang spammer, gangguan, atau troll perlu didisiplinkan.
+  Dengan perintah ini anda dapat dengan mudah membisukan seseorang.\n
+  **Hanya Administrator yang dapat melakukan ini!:**
+  × /mute <Melalui id pengguna atau username>: Membisukan seseorang di supergroup.
+  × /mute <Melalui id pengguna atau username> X<m|h|d>: Membisukan sementara seseorang untuk X time.
+  × /unmute <Melalui id pengguna atau username>: Tidak membisukan seorang pengguna yang dibisukan.\n
+  Contoh untuk membisukan sementara seseorang:
+  m = Menit, h = Jam and d = Hari.
+  `/mute @username 2h`; Pengguna ini akan dibisukan selama 2 jam.
+invalid-time-flag: Tipe waktu tidak benar. Tolong gunakan m,h, atau d.
+no-mute-user: Berikan saya pengguna yang akan dibisukan!
+no-unmute-user: Berikan saya pengguna yang akan tidak dibisukan dan membuat mereka bisa berbicara kembali!
+mute-success: Berhasil dibisukan **{}**!
+mute-success-time: Berhasil dibisukan **{}** untuk {}!
+unmute-done: Sudah tidak dibisukan!\n pengguna ini bisa berbicara kembali!
+cant-mute-admin: Saya tidak akan membisukan seorang Administrator!
+self-muting: Hahaha, saya tidak akan membisukan diri saya sendiri!
+already-muted: Pengguna ini sudah dibisukan!
+user-not-muted: Pengguna ini tidak dibisukkan dan memiliki ijin untuk bisa berbicara!
+#endregion
+#region note
+notes-button: Catatan
+notes-help: |
+  \nSimpan data yang akan dibaca atau digunakan dikemudian hari didalam catatan!\n
+  **Perintah pengguna:**
+  × /get <nama catatan>: Menampilkan catatan dengan nama catatan ini. Contoh, jika anda ingin membuka catatan bernama test, itu akan menjadi /get test.
+  × #<nama catatan>: Sama seperti /get. Contoh : #test
+  × /notes: Daftar semua catatan pada grup ini.\n
+  **Perintah Administrator:**
+  × /save <nama catatan> <isi catatan>: Menyimpan catatan baru dengan nama "<nama catatan>". Dengan cara membalas pesan yang akan disimpan pesannya.
+  × /clear <nama catatan> | /delnote <nama catatan>: Hapus catatan yang tersimpan jika ada dan tersimpan.
+  \nCek /markdownhelp untuk detail pemformatan.
+notes-invalid-args: |
+  Balas pesan yang akan disimpan atau berikan isi setelah nama catatan.
+  Contoh: /save <nama catatan> <isi catatan/balas ke pesan>
+note-saved: "Pesan disimpan dengan nama `{}`."
+note-list: "**Daftar semua catatan pada grup ini {}:**\n"
+no-notes: "`Tidak ada catatan pada grup ini!`"
+notes-del-noargs: Berikan saya nama catatan yang akan dihapus!
+notes-not-exist: Tidak ada catatan itu pada grup ini!
+notes-deleted: "Catatan `{}` dihapus!."
+notes-expired: FileID kadaluarsa, ini bisa saja terjadi ketika dihapus(siklus pembersihan) oleh Telegram.
+#endregion
+#region purge
+purges-button: Pembersihan
+purges-help: |
+  Hapus pesan di grup dengan mudah menggunakan saya dengan perintah berikut ini.\n
+  ** Hanya Administrator yang bisa menggunakan: **
+  × /del: Hapus pesan yang dibalas.
+  × /purge | /prune: Menghapus semua pesan hingga pesan yang dibalas /purge.
+purge-done: "`{} pesan telah dihapus dalam {} detik...`"
+purge-error: "__Mohon maaf tidak bisa menghapus pesan lebih dari 2 hari__"
+#endregion
+#region reporting
+reporting-button: Laporan
+reporting-help: |
+  **Hanya Administrator yang bisa menggunakan:**
+  × /reports <yes/no/on/off>: Menghidupkan atau mematikan laporan grup.
+    - Jika dijalankan di grup akan mengubah pengaturan grup dan akan menampilkan notifikasi.
+    - Jika dijalankan di PM akan mengubah pengaturan kamu dan akan menampilkan notifikasi.
+  \n**Perintah pengguna:**
+  × /report: Balas pesan untuk melaporkannya agar dapat ditinjau oleh Administrator.
+  × @admin: Sama seperti /report.
+  \nSecara sederhana balas pesan dengan @admin atau /report. Saya akan memberikan notifikasi kepada semua Administrator mengenai pesan yang kamu laporkan.
+  **Catatan** /reports and @admin tidak akan direspon jika itu adalah pesan Administrator.
+report-on: Pelaporan dihidupkan! anda akan diberi tahu setiap kali laporan terjadi dalam grup.
+chat-report-on: Pelaporan dihidupkan! Administrator yang telah menghidupkan laporan akan diberi tahu saat /report atau @admin digunakan.
+report-off: Pelaporan dimatikan! anda tidak akan mendapatkan laporan dari grup dimana anda menjadi Administrator.
+chat-report-off: Pelaporan dimatikan! Administrator tidak akan diberi tahu jika ada /report atau @admin!
+report-setting: "Pengaturan laporan grup ini saat ini adalah: `{}`"
+chat-report-setting: "Pengaturan laporan anda saat ini adalah: `{}`"
+no-report-user: Siapa yang harus saya laporkan?
+cant-report-me: Tidak, saya tidak akan melaporkan diri saya sendiri!
+cant-report-admin: Mengapa saya harus melaporkan Administrator grup?
+cant-self-report: Kenapa anda melaporkan diri anda sendiri?
+report-notif: Melaporkan {} kepada para Administrator!
+report-admin-format: |
+  **Laporan dari: {chat}**
+  × **Dilaporkan oleh: ** {by_user} `{by_user_id}`
+  × **Pengguna yang dilaporkan: ** {reported_mention} `{reported_id}`
+user-not-in-chat: Pengguna yang kamu laporkan sudah tidak ada dalam grup ini lagi.
+#endregion
+#region restrictions
+restriction-button: Pembatasan
+restriction-help: |
+  Orang yang mengirim spam, mengolok-olok, atau mengganggu perlu dibatasi.
+  Dengan perintah ini, Administrator grup dapat dengan mudah membatasi anggota yang melanggar.
+  Berikut ini adalah daftar perintah yang dapat kamu gunakan.\n
+  **Hanya Administrator yang bisa menggunakan:**
+  × /kick <Melalui id pengguna atau username> [alasan]: Mengeluarkan seorang anggota grup, (Melalui id pengguna, username atau balas pesan orang yang akan dikeluarkan)
+  × /ban <Melalui id pengguna atau username> [alasan]: Mengeluarkan seorang anggota grup dan melarangnya untuk dapat bergabung kembali, (Melalui id pengguna, username atau balas pesan orang yang akan dikeluarkan dan akan dilarang untuk bergabung kembali)
+  × /sban <Melalui id pengguna atau username>: Mengeluarkan seorang anggota grup dan melarangnya untuk dapat bergabung kembali secara mode bisu, (Melalui id pengguna, username atau balas pesan orang yang akan dikeluarkan dan akan dilarang untuk bergabung kembali)
+  × /unban <Melalui id pengguna atau username>: Membatalkan larangan seseorang untuk tidak dapat bergabung kembali digrup anda (Melalui id pengguna, username atau balas pesan orang tersebut)
+  × /kickme: Gunakan perintah ini, jika anda ingin ditendang dari grup!!
+  × /warn <Melalui id pengguna atau username> [alasan]: Peringati pengguna. (Melalui id pengguna, username atau balas pesan orang yang akan diperingati)
+  × /warnlimit <batas>: Setel batas peringatan.
+  × /rmwarn <Melalui id pengguna atau username>: Hapus peringatan terakhir pengguna. (Melalui id pengguna, username atau balas pesan orang yang akan dihapus peringatan terakhirnya)
+
+  **Perintah pengguna:**
+  × /warns: Periksa data peringatan pengguna. (bisa balas pesan orang yang akan diperiksa)
+no-kick-user: Siapa yang harus saya keluarkan?
+admin-kick: Saya tidak bisa mengeluarkan seorang Administrator.
+kick-done: "**{}** Dikeluarkan!"
+kick-reason: "\nAlasan: {}"
+kickme: Baiklah.. anda merasa dunia ini terlalu kejam bukan!!
+kickme-user-admin: "Sebuah kutukan diberikan untukmu, Mohon tetap lah tenang disini 🤣"
+kickme-need-perm: Saya sangat ingin menendang mu sejujurnya, Tapi saya tidak bisa
+no-ban-user: Siapa yang harus saya blokir?
+admin-ban: Saya tidak akan memblokir Administrator!
+ban-done: "**{}** terblokir!"
+ban-reason: "\nAlasan: {}"
+unban-no-user: Berikan saya pengguna untuk diblokir.
+unban-done: "Blokir **{}** dihapus..."
+warn-keyboard-text: Hapus peringatan.
+warn-keyboard-not-admins: Kamu tidak berhak melakukan hal tersebut.
+warn-keyboard-removed: Peringatan ini sudah dihapus.
+warn-keyboard-user-max: Pengguna sudah melampaui batas peringatan.
+warn-removed: |
+  Admin {} telah menghapus peringatan untuk {}.
+warn-user-max: Mencapai maksimum peringatan, {} telah dikeluarkan dari group.
+warn-message: |
+  Pengguna {} telah diperingatkan '{}/{}'.\n\nAlasan: __{}__
+warn-message-list: "Pengguna {} mempunyai '{}/{}' peringatan.\nAlasannya:\n{}"
+warn-no-user: Berikan saya pengguna untuk diperingatkan.
+warn-default-reason: Tidak diberikan alasan.
+warn-no-data: Pengguna {} bersih dari peringatan.
+warn-limit-no-input: Berikan saya batas peringatan setelah perintah.
+warn-limit-invalid-input: Kesalahan input, hanya masukkan nomor dan lebih dari 0.
+warn-limit-done: Batas peringatan telah diubah menjadi '{}'.
+rmwarn-no-user: Siapa yang harus saya hapus peringatannya?
+rmwarn-done: Pengguna {} telah dihapus peringatan terakhirnya.
+rmwarn-admin: Seorang administrator tidak seharusnya mempunyai peringatan 🤨
+#endregion
+#region rules
+rules-button: Aturan
+rules-help: |
+  Setiap grup memiliki aturan yang berbeda, modul ini akan membantu memperjelas aturan tersebut!\n
+  × /rules: Menampilkan aturan suatu grup.\n
+  **Hanya Administrator yang bisa menggunakan:**
+  × /setrules <aturan grup>: Menetapkan aturan dalam grup.
+  × /clearrules: Menghapus aturan dalam grup.\n
+  **Catatan**
+  Untuk membuat tautan tampilan aturan khusus, yang anda butuhkan hanyalah id grup dan tempelkan ke tautan:
+  `t.me/{username}?start=rules_<chat_id>`
+rules-blank-err: Aturan tidak boleh kosong!
+rules-set: "Aturan grup sudah ditetapkan!\nTautan untuk melihat aturan: `{}`"
+rules-clear: Berhasil menghapus aturan dalam grup!
+rules-none: Gagal mendapatkan aturan obrolan! Tidak ada catatan yang ditemukan.
+rules-view-caption: Klik tombol ini untuk melihat aturan grup!
+rules-view-pm: "Aturan untuk **{}** adalah:\n\n"
+rules-invalid-button: 'Chat_id tidak valid: "{}". (__Invalid Syntax__)'
+rules-channel-invalid: Grup tidak dapat diakses, besar kemungkinan saya telah diblokir dari grup.
+#endregion
+#region spam prediction
+spampredict-button: Spam Prediksi
+spampredict-help: |
+  Sebagai tambahan, saat ini kami sedang mengembangkan perlindungan spam menggunakan machine learning. Bot akan mendeteksi dan menghapus pesan spam dari grup anda.
+  Anda juga dapat membantu kami mendidik model kami dengan memberikan suara di @SpamPredictionLog. Anda akan mendapatkan poin reputasi dengan beberapa manfaat ke depannya 😉.\n
+  **Hanya Administrator yang bisa menggunakan:**
+  × /spampredict <on/off/yes/no>: Akan mematikan atau menyalakan pengaruh dari perlindungan spam di grup anda.\n
+  Jika dinyalakan, bot akan otomatis menghapus dan mencatat pesan ke @SpamPredictionLog.\n
+  **Perintah pengguna:**
+  × /predict <balas ke pesan>: Bot akan memprediksi apakah pesan itu spam atau tidak*.
+  *perintah ini akan memakai 10 poin reputasi anda.
+spampredict-set: "Chat spam prediksi berubah ke {}."
+spampredict-view: |
+  Spam Prediction Setting: **{}**.
+  Jika dinyalakan akan otomatis menghapus pesan yang terdeteksi sebagai suatu spam.
+spampredict-empty: pesan/photo teks atau keterangan media kosong untuk diprediksi...
+spampredict-photo: "Membaca teks pada foto dengan ocr...\nIni bisa saja membutuhkan waktu lama."
+spampredict-photo-failed: "__Gagal membaca teks pada foto dengan ocr.__\n\n"
+spampredict-insuficent: |
+  Poin reputasi anda tidak cukup untuk menjalankan perintah prediksi!
+  Prediksi akan memakai {} poin reputasi anda, dan anda hanya memiliki {} poin reputasi.
+  Untuk mendapatkan poin reputasi silahkan berikan suara di @SpamPredictionLog.
+spampredict-failed: Prediksi gagal...
+spampredict-ban: "{user} telah diblokir!"
+spampredict-ban-no-perm: "Kamu tidak punya izin untuk melakukan ini!"
+#endregion
+#region spam shield
+spamshield-button: Spam Shield
+spamshield-help: |
+  **Hanya Administrator yang bisa menggunakan:**
+  /spamshield <on/off/yes/no>: Akan mematikan atau menyalakan pengaruh dari perlindungan spam di grup anda.\n
+  Spam shield menggunakan Combot Anti Spam, API @Spamwatch, dan larangan global untuk menghapus sebanyak mungkin orang yang melakukan spam dari ruang obrolan anda!
+banned-text: |
+  #SPAM_SHIELD\n
+  **Nama:** {}
+  **ID:** `{}`
+  **Alasan**: {}
+  **Client:** {}
+  Orang ini terdeteksi sebagai spambot dan sudah dikeluarkan!
+spamshield-set: "Grup #SPAM_SHIELD turned {}"
+spamshield-view: |
+  Spam shield setting: {}
+  Spam shield adalah fitur yang digunakan untuk melindungi grup anda dari orang yang melakukan spam dan orang iseng.
+#endregion
+#region topic
+topic-button: Topik
+topic-help: |
+  Topik pada Telegram memungkinkan grup untuk dibagi menjadi beberapa chat di dalam grupnya (atau disebut forum).
+  Plugin ini membantu untuk mengelola topic menggunakan Riakmaw.
+
+  Sebuah group topik membutuhkan sebuah topik default yang berfungsi sebagai tempat sambutan dan aksi lain oleh Riakmaw.
+
+  **Hanya Administrator yang bisa menggunakan:**
+  × /setactiontopic | /setdefaulttopic: mengatur topik saat ini untuk menjadi topik default pada grup.
+topic-non-topic: Grup ini bukan sebuah forum (topik)!
+topic-set: Topik ini akan digunakan sebagai topik default Riakmaw.
+#endregion
+#region greetings
+greetings-button: Pesan Sambutan
+greetings-help: |
+  Pesan selamat datang di grup anda yang dapat diatur dengan berbagai cara yang anda mau.\n
+  **Hanya Administrator yang bisa menggunakan:**
+  × /setwelcome <teks> | <balas pesan>: Akan menjadikan pesan anda menjadi pesan sambutan jika ada orang yang bergabung pada grup anda. Silahkan membalas dengan pesan sambutan yang anda inginkan!
+  × /resetwelcome: Mengubah pesan sambutan anda kepada pesan sambutan bawaan saya.
+  × /welcome <on/off>: Menghidupkan atau mematikan pesan sambutan.
+  × /welcome: Menampilkan pesan sambutan anda saat ini dan pengaturannya saat ini.
+  × /setgoodbye <teks> | <balas pesan>: Akan menjadikan pesan anda menjadi pesan selamat tinggal jika ada anggota yang keluar.
+  × /resetgoodbye: Mengubah pesan selamat tinggal anda kepada pesan selamat tinggal bawaan saya.
+  × /goodbye <on/off>: Menghidupkan atau mematikan pesan selamat tinggal.
+  × /goodbye: Menampilkan pesan selamat tinggal anda saat ini dan pengaturannya saat ini.\n
+  × /cleanservice <on/off>: Menghapus pesan 'pengguna bergabung' secara otomatis.
+   **Catatan**:\nUntuk mendapatkan pesan tanpa format tambahkan "noformat" di akhir.
+  Contoh: `/welcome noformat`
+
+  Cek /markdownhelp dan /fillinghelp untuk detail pemformatan.
+greetings-no-input: Berikan text yang ingin di setel!
+bot-added: |
+  Hai salam kenal. Terima kasih telah mengundang saya ke grup anda.
+  Untuk melihat perintah yang bisa anda gunakan. Silahkan ketik /help.
+default-welcome: Hai {first}, apa kabar?\nSelamat datang di {chatname}
+clean-serv-set: "Mengubah pembersihan pesan layanan : {}."
+welcome-set: Sambutan menjadi {} saat anggota baru bergabung.
+cust-welcome-set: Berhasil mengubah pesan sambutan sesuai yang anda inginkan!
+reset-welcome: Berhasil mengubah pesan sambutan ke pesan sambutan bawaan saya!
+view-welcome: |
+  **Grup ini memiliki pengaturan: **
+  `Menyambut pengguna` = `{}`
+  `Pembersihan pesan layanan` = `{}`
+  Dan pesan sambutan dari grup ini adalah:
+default-goodbye: "{first} dia baru saja keluar!"
+goodbye-set: Selamat tinggal menjadi {} saat ada anggota yang keluar.
+cust-goodbye-set: Berhasil mengubah pesan selamat tinggal sesuai yang anda inginkan!
+reset-goodbye: Berhasil mengubah pesan selamat tinggal ke pesan selamat tinggal bawaan saya!
+view-goodbye: |
+  **Grup ini memiliki pengaturan:**
+  `Ucapan selamat tinggal untuk anggota yang keluar` = `{}`
+  `Pembersihan pesan layanan` = `{}`
+  Dan pesan selamat tinggal dari grup ini adalah:
+#endregion
+#region lockings
+lockings-button: Lockings
+lockings-help: |
+  Plugin ini akan membantu anda untuk mengunci/membuka pengaturan hak/tipe pesan untuk anggota yang bukan admin pada grup.\n
+  **Hanya Administrator yang bisa menggunakan:**
+  × /lock <tipe pesan/hak>: Akan mengunci hak/tipe pesan pada grup.\n
+  × /unlock <tipe pesan/hak>: Akan membuka tipe pesan/hak yang terkunci pada grup.\n
+  × /locktypes : Melihat tipe pesan/hak yang tersedia untuk dikunci/dibuka.\n
+  × /locks : Melihat tipe pesan/hak yang terkunci.\n
+lockings-types-available: "**Tipe pesan atau hak kunci yang tersedia**:\n"
+lockings-types-perm: "**Hak grup yang terkunci saat ini untuk anggota yang bukan admin**:\n"
+lockings-types-list: "**Tipe pesan yang terkunci saat ini untuk anggota yang bukan admin**:\n"
+lockings-types-list-empty: "**Tidak ada yang terkunci saat ini pada grup.**"
+lockings-type-required: Tolong sediakan tipe pesan yang ingin dikunci.
+lockings-type-locked: "'`{lock_type}`' sudah terkunci."
+lockings-type-invalid: "'`{lock_type}`' tipe pesan tidak sah."
+lockings-type-done: Berhasil mengunci '`{lock_type}`'.
+lockings-bots-not-admin: Saya melihat bot ditambahkan selain pemilik grup dan pengaturan tipe bot dikunci.\nAkan tetapi saya tidak bisa mengeluarkannya karena saya bukan administrator.
+lockings-failed-to-delete: "'`{lock_type}`' dikunci tetapi saya tidak bisa menghapusnya.\nKemungkinan saya bukan administrator."
+lockings-admin-required: |
+  Metode ini membutuhkan hak administrator untuk mengunci tipe pesan/hak.\n
+  -> __{message}__
+unlockings-type-required: Tolong sediakan tipe pesan yang ingin dikunci.
+unlockings-type-unlocked: "'`{unlock_type}`' tidak terkunci."
+unlockings-type-invalid: "'`{unlock_type}`' tipe pesan tidak sah."
+unlockings-type-done: Berhasil membuka kunci '`{unlock_type}`'.
+types-note: |
+  \n\n__Catatan__:
+  × **other** -> mengunci **animation**, **game**, **sticker** dan **inline** disaat yang sama.
+#endregion
+#region common-error
+error-its-myself: "Saya tidak bisa melakukan apa pun untuk diri saya sendiri"
+err-chat-groups: Perintah ini khusus untuk grup, bukan untuk PM!
+err-chat-private: Perintah ini khusus untuk PM!
+error-no-rights: "Anda tidak memiliki hak untuk menggunakan perintah ini!"
+err-not-participant: "Pengguna ini bukan anggota grup!"
+err-invalid-option: Pilihan ini tidak sah atau tidak benar!
+err-invalid-username-id: "`Tidak sah username atau id pengguna!`"
+error-reply-to-message: Balas ke sebuah pesan!
+err-yes-no-args: Usage is on/yes or off/no
+err-peer-invalid: "**PEER_ID_INVALID**\nSepertinya saya tidak memiliki akses ke pengguna ini, mungkin IDnya tidak sah atau tidak benar."
+err-api-down: Api sedang bermasalah, coba lagi nanti.
+err-group-creator-cmd: Hanya pemilik grup yang dapat menggunakan perintah ini!
+err-invalid-pid: Identifier tidak sah atau tidak benar!
+err-anonymous: Anda sedang dalam mode anonim...\n__Matikan dulu mode tersebut.__
+err-not-admin: Anda bukan Administartor group ini...
+err-perm: Saya dan Anda bukan administrator pada group ini.
+err-unexpected: "Telah terjadi kesalahan yang tak terduga!\n\n**Error:** `{}`"
+err-msg-format-parsing: "**Terjadi kesalahan penguraian format pesan!**\n**Kesalahan pada:** `{err}`."
+err-im-not-admin: Saya bukan administrator di sini! Saya membutuhkan hak administrator untuk melakukan ini.
+err-illegal-trigger: "Karakter ilegal pada kata kunci!\n'.' dan '$' tidak diperbolehkan"
+#endregion
