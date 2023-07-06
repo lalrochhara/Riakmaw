@@ -67,8 +67,10 @@ class Riakmaw(TelegramBot, DatabaseProvider, PluginExtender, CommandDispatcher, 
         finally:
             asyncio.get_event_loop().stop()
 
-    async def stop(self) -> None:
-        self.stopping = True
+    async def stop(self: "Riakmaw") -> None:
+    if not self.client.is_connected:
+        return
+    await self.dispatch_event("stop")
 
         self.log.info("Stopping")
         if self.loaded:
