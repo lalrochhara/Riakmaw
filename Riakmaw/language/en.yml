@@ -1,13 +1,13 @@
 #region Main
 start-pm: |
-  Hey there! my name is [**{}**](https://firebasestorage.googleapis.com/v0/b/baby-bawitlung-story.appspot.com/o/Image%20file%2Fdsacrt.jpg?alt=media&token=3d122954-95a1-4394-82f9-cee3814f3936).
+  Hey there! my name is ![**{}**](https://firebasestorage.googleapis.com/v0/b/baby-bawitlung-story.appspot.com/o/Image%20file%2Fdsacrt.jpg?alt=media&token=3d122954-95a1-4394-82f9-cee3814f3936).
   Any questions on how to use me? use /help
   Join Our [Group](https://t.me/famhawiteinfosys) If You wanna Report Issue 🙂
   I'm here to make your group management fun and easy!
   **Managed With ❤️ By :** [Famhawite Infosys](https://t.me/famhawiteinfosys)
   Wanna Add me to your Group? Just click the button below!
 help-pm: |
-  Hello there! My name is [**{}**](https://firebasestorage.googleapis.com/v0/b/baby-bawitlung-story.appspot.com/o/Image%20file%2Fdsacrt.jpg?alt=media&token=3d122954-95a1-4394-82f9-cee3814f3936).
+  Hello there! My name is ![**{}**](https://firebasestorage.googleapis.com/v0/b/baby-bawitlung-story.appspot.com/o/Image%20file%2Fdsacrt.jpg?alt=media&token=3d122954-95a1-4394-82f9-cee3814f3936).
   I'm a modular group management bot with a few fun extras! Have a look at the following for an idea of some of \
   the things I can help you with.
   **Main** commands available:
@@ -293,7 +293,8 @@ language-help: |
   You can choose your language preference!\n
   **Available languages:**
   - 🇺🇸 English.
-  - 🇮🇩 Indonesia.\n
+  - 🇮🇩 Indonesia.
+  - IN Mizo.\n
   Commands:
   ×  /setlang | /lang | /language : set your preferred language.\n
   **Note**
