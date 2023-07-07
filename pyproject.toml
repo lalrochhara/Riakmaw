@@ -9,7 +9,7 @@ authors = [
 ]
 readme = "README.md"
 homepage = "https://userbotindo.com/Riakmaw"
-repository = "https://github.com/userbotindo/Riakmaw"
+repository = "https://github.com/lalrochhara/Riakmaw"
 documentation = "https://userbotindo.com/Riakmaw/docs/home"
 keywords = ["chatbot", "bot", "python", "telegram-bot", "pyrogram"]
 classifiers = [
