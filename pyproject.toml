@@ -39,7 +39,7 @@ aiopath = [
 aiorun = "^2023.7.2"
 certifi = {version = ">=2022.12.7,<2024.0.0", platform = "windows"}
 colorlog = "^6.7.0"
-frozenlist = "^1.3.3"
+frozenlist = "^1.4.0"
 meval = "^2.5"
 multidict = "^6.0.4"
 pymongo = "^4.3.3"
